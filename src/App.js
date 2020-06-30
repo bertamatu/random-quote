@@ -1,25 +1,46 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Button from "./components/Button";
+import FetchData from "./components/FetchData";
+import Quote from "./components/Quote";
 
-function App() {
+function App(props) {
+  // const [loading, setLoading] = useState(true);
+  // const [error, setError] = useState("");
+  // const [data, setData] = useState([]);
+
+  // const getQuote = () => {
+  //   setLoading(true);
+  //   fetch("https://simpsons-quotes-api.herokuapp.com/quotes")
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       setLoading(false);
+  //       setData(data);
+  //       console.log(data);
+  //     })
+  //     .catch((e) => {
+  //       setLoading(false);
+  //       setError("fetch failed");
+  //     });
+  // };
+
+  // useEffect(() => {
+  //   getQuote();
+  // }, []);
+
+  // if (loading) {
+  //   return <p>loading..</p>;
+  // }
+
+  // if (error !== "") {
+  //   return <p>ERROR: {error}</p>;
+  // }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main>
+      <FetchData />
+      <Button />
+      <Quote {...props} />
+    </main>
   );
 }
 
