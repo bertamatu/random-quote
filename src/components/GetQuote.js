@@ -1,6 +1,16 @@
 import React, { useState, useEffect } from "react";
+import styled from "styled-components";
 import Button from "./Button";
 
+const QuoteContainer = styled.main`
+  padding: 2rem;
+`;
+const Quote = styled.p`
+  color: red;
+`;
+const Image = styled.img`
+  height: 300px;
+`;
 function GetQuote() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -33,16 +43,16 @@ function GetQuote() {
   }
 
   return (
-    <main>
+    <QuoteContainer>
       {data.map((quote, index) => (
         <section key={index}>
-          {quote.quote}
+          <Quote> {quote.quote}</Quote>
           <p>{quote.character}</p>
-          <img src={quote.image} alt="" />
+          <Image src={quote.image} alt="" />
         </section>
       ))}
       <Button getQuote={getQuote} />
-    </main>
+    </QuoteContainer>
   );
 }
 
