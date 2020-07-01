@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
+import Button from "./Button";
 
-function FetchData(props) {
+function GetQuote() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [data, setData] = useState([]);
@@ -16,7 +17,7 @@ function FetchData(props) {
       })
       .catch((e) => {
         setLoading(false);
-        setError("fetch failed");
+        setError("fetch failed", error);
       });
   };
 
@@ -27,7 +28,6 @@ function FetchData(props) {
   if (loading) {
     return <p>loading..</p>;
   }
-
   if (error !== "") {
     return <p>ERROR: {error}</p>;
   }
@@ -41,8 +41,9 @@ function FetchData(props) {
           <img src={quote.image} alt="" />
         </section>
       ))}
+      <Button getQuote={getQuote} />
     </main>
   );
 }
 
-export default FetchData;
+export default GetQuote;
